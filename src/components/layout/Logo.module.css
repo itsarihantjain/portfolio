@@ -1,0 +1,109 @@
+.logo {
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  font-family: var(--font-funk);
+  font-size: 15px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  /* Letters dangle below the key while hanging */
+  overflow: visible;
+}
+
+/* ---------- Black terminal tile ---------- */
+.fill {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: #050505;
+  overflow: hidden;
+}
+
+/* A thin band of light that sweeps across the tile every few seconds */
+.fill::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  width: 45%;
+  left: -60%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-18deg);
+  animation: shine 6s ease-in-out 2.5s infinite;
+}
+
+@keyframes shine {
+  0% { left: -60%; }
+  18%, 100% { left: 130%; }
+}
+
+/* Frame stroke draws itself once the letters are upright */
+.frame {
+  position: absolute;
+  inset: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.frame rect {
+  fill: none;
+  stroke: url(#logoEmerald);
+  stroke-width: 1.5;
+  /* 101 rather than 100 so the start and end of the stroke overlap with no seam */
+  stroke-dasharray: 101;
+  stroke-dashoffset: 101;
+  transition: stroke-dashoffset 0.2s ease;
+}
+
+.logo[data-phase='up'] .frame rect {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s cubic-bezier(0.65, 0, 0.35, 1) 0.6s;
+}
+
+/* Blinking caret after the J */
+.cursor {
+  position: relative;
+  align-self: center;
+  width: 2px;
+  height: 15px;
+  margin-left: 2px;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #8affd0, #1ff2a0 50%, #00b36b);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.logo[data-phase='up'] .cursor {
+  opacity: 1;
+  animation: blink 1.1s steps(1) 1.4s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Press feedback */
+.logo {
+  transition: transform 0.15s ease;
+}
+
+.logo:active {
+  transform: scale(0.92);
+}
+
+/* Full badge height so the pivot (bottom centre) sits on the badge's bottom edge */
+.letter {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}

@@ -1,0 +1,18 @@
+.blob {
+  position: fixed;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 2000;
+}
+
+@media (hover: none) {
+  .blob {
+    display: none;
+  }
+}

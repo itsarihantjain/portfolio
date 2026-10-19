@@ -1,0 +1,224 @@
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(190px, auto);
+  gap: 18px;
+}
+
+.cell {
+  height: 100%;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Layout */
+.intro { grid-column: span 2; grid-row: span 2; }
+.years { grid-column: span 2; }
+.crash { grid-column: span 1; }
+.products { grid-column: span 1; }
+.companies { grid-column: span 1; }
+.now { grid-column: span 3; }
+
+/* Intro */
+.intro .card {
+  justify-content: flex-start;
+  padding: 36px;
+}
+
+.introIcon {
+  color: var(--color-accent-hover);
+  margin-bottom: 24px;
+}
+
+.introTitle {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 20px;
+}
+
+.introText {
+  font-size: 17px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+/* Numbers */
+.bigNumber {
+  font-family: var(--font-funk);
+  font-size: clamp(64px, 8vw, 104px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+/* The 99% card is a single column wide, so its number steps down a size */
+.crash .bigNumber {
+  font-size: clamp(48px, 5vw, 72px);
+}
+
+.midNumber {
+  font-family: var(--font-funk);
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+}
+
+.statLabel {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.statIcon {
+  color: var(--color-text-muted);
+  margin-bottom: auto;
+}
+
+/* Full-bleed spectrum card */
+.gradientCard {
+  background: var(--gradient-brand);
+  background-size: 200% 200%;
+  animation: drift 10s ease-in-out infinite;
+  border: none;
+}
+
+.gradientCard {
+  color: var(--color-on-accent);
+}
+
+.gradientCard .statLabel {
+  color: rgba(20, 20, 24, 0.72);
+}
+
+@keyframes drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* "Right now" card */
+.nowCard {
+  position: relative;
+  justify-content: center;
+}
+
+.nowLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--color-success);
+  margin-bottom: 12px;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  box-shadow: 0 0 12px var(--color-success);
+}
+
+.nowRole {
+  font-family: var(--font-heading);
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.nowCompany {
+  font-family: var(--font-heading);
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: -0.02em;
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+.spinner {
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  margin-top: -110px;
+  font-size: 220px;
+  line-height: 1;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .intro,
+  .years,
+  .now {
+    grid-column: span 2;
+  }
+
+  .intro {
+    grid-row: auto;
+  }
+
+  .companies {
+    grid-column: span 2;
+  }
+
+  .crash,
+  .products {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .intro,
+  .years,
+  .now,
+  .companies,
+  .crash,
+  .products {
+    grid-column: span 1;
+  }
+
+  .intro .card {
+    padding: 28px;
+  }
+
+  .spinner {
+    font-size: 160px;
+    margin-top: -80px;
+    opacity: 0.4;
+  }
+}

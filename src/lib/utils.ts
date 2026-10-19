@@ -1,0 +1,7 @@
+/**
+ * Utility: Merge class names conditionally
+ * Simple classname helper without external dependencies
+ */
+export function cn(...classes: (string | undefined | null | false)[]): string {
+  return classes.filter(Boolean).join(" ");
+}

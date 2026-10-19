@@ -1,0 +1,46 @@
+.educationCard {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px;
+}
+
+.icon {
+  color: var(--color-accent-hover);
+  margin: 0 auto 20px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-accent-soft);
+  border: 1px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 14px;
+  animation: floaty 4s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-4deg); }
+}
+
+.institution {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.degree {
+  font-size: 16px;
+  color: var(--color-accent-hover);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.dateRange {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-family: var(--font-code);
+}

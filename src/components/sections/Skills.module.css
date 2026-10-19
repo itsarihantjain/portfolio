@@ -1,0 +1,142 @@
+/* ---------- Crossing tapes ---------- */
+.tapes {
+  position: relative;
+  height: 220px;
+  margin: 0 calc(50% - 50vw) 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tape {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  padding: 16px 0;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+}
+
+.tapeA {
+  transform: rotate(-4deg);
+  background: var(--gradient-brand);
+  background-size: 200% auto;
+  animation: tapeShift 8s ease-in-out infinite;
+  color: var(--color-on-accent);
+  z-index: 2;
+}
+
+.tapeB {
+  transform: rotate(3.5deg);
+  background: #f5f5f7;
+  color: #000;
+}
+
+@keyframes tapeShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.tapeTrack {
+  display: flex;
+  width: max-content;
+  animation: scroll 38s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+  animation-duration: 44s;
+}
+
+.tapes:hover .tapeTrack {
+  animation-play-state: paused;
+}
+
+.tapeItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  font-family: var(--font-funk);
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tapeStar {
+  font-size: 22px;
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Category cards ---------- */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.cell {
+  height: 100%;
+}
+
+.categoryCard {
+  height: 100%;
+  padding: 28px;
+}
+
+.categoryTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.categoryIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  color: var(--color-on-accent);
+  background: var(--gradient-brand);
+  border: none;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 900px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .tapes {
+    height: 160px;
+    margin-bottom: 40px;
+  }
+
+  .tapeItem {
+    font-size: 18px;
+    gap: 18px;
+    padding-right: 18px;
+  }
+
+  .tape {
+    padding: 11px 0;
+  }
+}

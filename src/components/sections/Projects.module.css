@@ -1,0 +1,331 @@
+.section {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--navbar-height);
+}
+
+.unpinned {
+  position: relative;
+  height: auto;
+  padding-top: 112px;
+  padding-bottom: 112px;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  padding: 0 24px;
+}
+
+.overline {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  font-size: clamp(40px, 6vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.counter {
+  font-family: var(--font-funk);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.counterNow {
+  font-size: clamp(32px, 4vw, 52px);
+  letter-spacing: -0.04em;
+}
+
+.counterTotal {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  margin-left: 6px;
+}
+
+.progress {
+  width: calc(100% - 48px);
+  max-width: 1152px;
+  height: 3px;
+  margin: 0 auto 28px;
+  border-radius: 3px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient-brand);
+  transform-origin: 0 50%;
+}
+
+/* ---------- Track ---------- */
+.track {
+  display: flex;
+  gap: 24px;
+  /* Line the first card up with the 1200px content column */
+  padding: 0 max(24px, calc((100vw - 1200px) / 2 + 24px));
+  width: max-content;
+  will-change: transform;
+}
+
+.nativeScroll {
+  width: auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+}
+
+.nativeScroll .cell {
+  scroll-snap-align: start;
+}
+
+/* Fixed size cells: every card is the same width and height */
+.cell {
+  flex: 0 0 auto;
+  width: clamp(290px, 34vw, 460px);
+  height: min(600px, calc(100svh - 260px));
+  min-height: 460px;
+}
+
+.projectCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ---------- Cover image ---------- */
+.projectImage {
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #0d0d0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1s var(--ease-out);
+}
+
+.projectCard:hover .image {
+  transform: scale(1.08);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 22, 23, 0) 55%, rgba(22, 22, 23, 0.9) 100%);
+  pointer-events: none;
+}
+
+.projectImageInner {
+  font-family: var(--font-funk);
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--color-text-muted);
+}
+
+.brandChip {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-funk);
+  font-size: 12px;
+  font-weight: 700;
+  color: #000;
+  background: #fff;
+  transform: rotate(-3deg);
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.projectCard:hover .brandChip {
+  transform: rotate(3deg) scale(1.08);
+}
+
+.index {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-family: var(--font-funk);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+}
+
+/* ---------- Body ---------- */
+.projectBody {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 24px 24px;
+}
+
+.projectTitle {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.titleArrow {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  transition: transform 0.4s var(--ease-out), color var(--transition-base);
+}
+
+.projectCard:hover .titleArrow {
+  transform: translate(4px, -4px) rotate(8deg);
+  color: #fff;
+}
+
+.projectDescription {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.cardLink {
+  display: block;
+  height: 100%;
+  color: inherit;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+.cardLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+/* ---------- End card ---------- */
+.endCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 32px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  background-size: 200% 200%;
+  animation: drift 10s ease-in-out infinite;
+  color: var(--color-on-accent);
+}
+
+@keyframes drift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.endTitle {
+  font-family: var(--font-funk);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.endLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 12px 20px;
+  border-radius: var(--radius-full);
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.endLink:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+@media (max-width: 768px) {
+  .cell {
+    width: 84vw;
+    min-height: 440px;
+    height: min(560px, calc(100svh - 230px));
+  }
+
+  .header {
+    padding: 0 16px;
+  }
+
+  .track {
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .progress {
+    width: calc(100% - 32px);
+  }
+
+  .projectTitle {
+    font-size: 20px;
+  }
+
+  /* Phone cards are taller relative to their width, so there's room for more copy */
+  .projectDescription {
+    -webkit-line-clamp: 7;
+  }
+}
