@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter_Tight, Inter, Unbounded, JetBrains_Mono } from 'next/font/google';
+import { Archivo, Space_Grotesk, Unbounded, Space_Mono } from 'next/font/google';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ScrollProgress from '@/components/layout/ScrollProgress';
 import CursorBlob from '@/components/layout/CursorBlob';
 import './globals.css';
 
-// Inter Tight is the closest open match to Apple's SF Pro Display
-const display = Inter_Tight({
+// Heavy grotesk for the big brutalist headlines
+const display = Archivo({
   subsets: ['latin'],
-  weight: ['500', '600', '700', '800', '900'],
+  weight: ['700', '800', '900'],
   display: 'swap',
   variable: '--font-display',
 });
 
-const body = Inter({
+const body = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '700'],
   display: 'swap',
   variable: '--font-body',
 });
@@ -29,9 +29,9 @@ const fun = Unbounded({
   variable: '--font-fun',
 });
 
-const mono = JetBrains_Mono({
+const mono = Space_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '700'],
   display: 'swap',
   variable: '--font-mono',
 });

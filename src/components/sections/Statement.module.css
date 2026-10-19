@@ -1,6 +1,10 @@
+/* Full-bleed black slab between the green hero and the cream sections */
 .track {
   position: relative;
   height: 260vh;
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom: var(--border-thick);
 }
 
 .sticky {
@@ -11,26 +15,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 1100px;
+  align-items: flex-start;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
 }
 
 .eyebrow {
-  font-family: var(--font-heading);
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--color-text-muted);
-  margin-bottom: 20px;
+  font-family: var(--font-code);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 14px;
+  margin-bottom: 28px;
+  background: var(--green);
+  color: var(--ink);
+  transform: rotate(-2deg);
 }
 
 .text {
   font-family: var(--font-heading);
-  font-size: clamp(34px, 5.6vw, 72px);
-  font-weight: 700;
-  line-height: 1.08;
+  font-size: clamp(36px, 6.2vw, 88px);
+  font-weight: 900;
+  line-height: 1.05;
   letter-spacing: -0.04em;
-  color: var(--color-text);
 }
 
 .word {
@@ -39,17 +48,10 @@
 }
 
 .highlight {
-  background: var(--gradient-text);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: slide 8s ease-in-out infinite;
-}
-
-@keyframes slide {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  background: var(--green);
+  color: var(--ink);
+  padding: 0 0.12em;
+  box-shadow: 0.06em 0.06em 0 var(--sky);
 }
 
 @media (max-width: 768px) {

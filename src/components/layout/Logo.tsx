@@ -6,8 +6,8 @@ import styles from './Logo.module.css';
 
 type Phase = 'hang' | 'up';
 
-const HANGING = '#f5f5f7';
-const UPRIGHT = '#1ff2a0'; // bright emerald legend on the black tile
+const HANGING = '#0a0a0a';
+const UPRIGHT = '#0a0a0a'; // black legend on the green tile
 const HANG_MS = 1800;
 
 // Each letter pivots on the badge's bottom edge: 180deg leaves it dangling
@@ -28,7 +28,7 @@ const letterVariants: Variants = {
   }),
 };
 
-// Gradient can't be tweened as a colour, so fade a gradient layer in instead
+// Fade the green tile in once the letters land
 const fillVariants: Variants = {
   hang: { opacity: 0, transition: { duration: 0.3 } },
   up: { opacity: 1, transition: { duration: 0.35, delay: 0.75 } },
@@ -71,7 +71,7 @@ export default function Logo({ onClick }: LogoProps) {
       onMouseEnter={replay}
       aria-label="AJ — go to top"
     >
-      {/* Black tile; fades in once the letters land */}
+      {/* Green tile; fades in once the letters land */}
       <motion.span
         className={styles.fill}
         variants={fillVariants}
@@ -92,17 +92,9 @@ export default function Logo({ onClick }: LogoProps) {
           {char}
         </motion.span>
       ))}
-      {/* Green frame that draws itself around the tile, terminal style */}
+      {/* Solid black frame that draws itself around the tile */}
       <svg className={styles.frame} aria-hidden>
-        {/* Polished emerald: light catches the top-left, deepens toward the bottom-right */}
-        <defs>
-          <linearGradient id="logoEmerald" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#8affd0" />
-            <stop offset="45%" stopColor="#1ff2a0" />
-            <stop offset="100%" stopColor="#00b36b" />
-          </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" rx="11" pathLength="100" />
+        <rect width="100%" height="100%" pathLength="100" />
       </svg>
       {/* Blinking text cursor after the J */}
       <span className={styles.cursor} aria-hidden />
