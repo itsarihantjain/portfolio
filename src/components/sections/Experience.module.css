@@ -1,60 +1,56 @@
 .timeline {
   position: relative;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding-left: 48px;
+  padding-left: 56px;
 }
 
 .timelineLine,
 .timelineProgress {
   position: absolute;
-  left: 7px;
+  left: 9px;
   top: 8px;
   bottom: 8px;
-  width: 2px;
-  border-radius: 2px;
+  width: 6px;
 }
 
 .timelineLine {
-  background-color: var(--color-border);
+  background-color: var(--ink);
 }
 
 .timelineProgress {
-  background: linear-gradient(180deg, var(--color-gradient-start), var(--color-gradient-mid), var(--color-gradient-end));
+  background: var(--sky);
   transform-origin: top;
-  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
 }
 
 .entry {
   position: relative;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 
 .dot {
   position: absolute;
-  left: -48px;
-  /* card padding (28) + half the company line (22px * 1.3 / 2) - half the dot (8) */
-  top: 34px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: var(--color-bg);
-  border: 3px solid var(--color-accent);
+  left: -56px;
+  /* card padding (32) + half the company line (28px * 1.2 / 2) - half the dot (12) */
+  top: 37px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--green);
+  border: var(--border);
   z-index: 1;
 }
 
 .dotActive {
-  border-color: var(--color-success);
-  animation: pulse 2s ease-in-out infinite;
+  background-color: var(--lime);
+  animation: pulse 1.6s steps(2) infinite;
 }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(var(--success-rgb), 0.2); }
-  50% { box-shadow: 0 0 0 10px rgba(var(--success-rgb), 0.05); }
+  50% { transform: rotate(45deg); }
 }
 
 .entryCard {
-  padding: 28px;
+  padding: 32px;
 }
 
 .header {
@@ -63,64 +59,64 @@
   align-items: flex-start;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .companyRow {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .company {
   font-family: var(--font-heading);
-  font-size: 22px;
-  line-height: 1.3;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  transition: color var(--transition-fast);
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--ink);
 }
 
 a.company:hover {
-  color: var(--color-accent-hover);
+  background: var(--green);
 }
 
 .currentTag {
   font-family: var(--font-code);
-  font-size: 11px;
+  font-size: 13px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   padding: 3px 10px;
-  border-radius: var(--radius-full);
-  color: var(--color-success);
-  background: rgba(var(--success-rgb), 0.1);
-  border: 1px solid rgba(var(--success-rgb), 0.3);
+  color: var(--ink);
+  background: var(--lime);
+  border: 2px solid var(--ink);
 }
 
 .role {
-  font-size: 15px;
-  color: var(--color-accent-hover);
-  font-weight: 600;
+  font-size: 19px;
+  color: var(--navy);
+  font-weight: 700;
 }
 
 .dateRange {
-  font-size: 13px;
-  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--ink);
   font-family: var(--font-code);
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  border: 1px solid var(--color-border);
+  padding: 6px 12px;
   white-space: nowrap;
 }
 
 .description {
-  font-size: 15px;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-  margin-bottom: 14px;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 16px;
 }
 
 .highlights {
@@ -129,40 +125,45 @@ a.company:hover {
 }
 
 .highlights li {
-  font-size: 14px;
+  font-size: 17px;
   color: var(--color-text-muted);
-  line-height: 1.7;
-  padding-left: 22px;
+  line-height: 1.6;
+  padding-left: 28px;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .highlights li::before {
   content: '→';
   position: absolute;
   left: 0;
-  color: var(--color-accent-2);
-  font-size: 14px;
+  font-weight: 700;
+  color: var(--sky);
 }
 
 @media (max-width: 768px) {
   .timeline {
-    padding-left: 32px;
+    padding-left: 36px;
   }
 
   .dot {
-    left: -32px;
-    top: 29px;
-    width: 14px;
-    height: 14px;
+    left: -36px;
+    top: 30px;
+    width: 18px;
+    height: 18px;
   }
 
   .timelineLine,
   .timelineProgress {
     left: 6px;
+    width: 5px;
   }
 
   .entryCard {
-    padding: 22px;
+    padding: 24px;
+  }
+
+  .company {
+    font-size: 23px;
   }
 }

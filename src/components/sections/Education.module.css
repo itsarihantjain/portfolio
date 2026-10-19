@@ -1,46 +1,52 @@
 .educationCard {
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
   text-align: center;
-  padding: 40px;
+  padding: 44px;
+  background: var(--navy);
+  color: var(--white);
 }
 
 .icon {
-  color: var(--color-accent-hover);
-  margin: 0 auto 20px;
-  width: 56px;
-  height: 56px;
+  color: var(--ink);
+  margin: 0 auto 24px;
+  width: 64px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-accent-soft);
-  border: 1px solid rgba(var(--accent-rgb), 0.3);
-  border-radius: 14px;
+  background-color: var(--green);
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
   animation: floaty 4s ease-in-out infinite;
 }
 
 @keyframes floaty {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-6px) rotate(-4deg); }
+  50% { transform: translateY(-6px) rotate(-6deg); }
 }
 
 .institution {
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--color-text);
-  margin-bottom: 8px;
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
 }
 
 .degree {
-  font-size: 16px;
-  color: var(--color-accent-hover);
-  font-weight: 500;
-  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 
 .dateRange {
-  font-size: 14px;
-  color: var(--color-text-muted);
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
   font-family: var(--font-code);
+  padding: 4px 12px;
+  background: var(--ink);
+  color: var(--green);
 }

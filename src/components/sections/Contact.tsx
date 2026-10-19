@@ -21,21 +21,12 @@ export default function Contact() {
       <SectionHeading overline="Contact" title="Got something wild in mind?" />
       <AnimatedElement direction="scale">
         <div className={styles.contactSection}>
-          {/* A glowing "snake" that runs laps around the edge of the box */}
+          {/* A green "snake" that runs laps around the edge of the box */}
           <svg className={styles.snake} aria-hidden>
-            <defs>
-              <linearGradient id="contactSnake" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="#4fc3ff" />
-                <stop offset="35%" stopColor="#a985ff" />
-                <stop offset="70%" stopColor="#ff6fb1" />
-                <stop offset="100%" stopColor="#ffb661" />
-              </linearGradient>
-            </defs>
-            <rect className={styles.snakeGlow} width="100%" height="100%" rx="32" pathLength="100" />
-            <rect className={styles.snakeLine} width="100%" height="100%" rx="32" pathLength="100" />
+            <rect className={styles.snakeLine} width="100%" height="100%" pathLength="100" />
           </svg>
           <p className={styles.bigText}>
-            Let&apos;s make it <span className="gradient-text">ridiculously good.</span>
+            Let&apos;s make it <span className="marker">ridiculously good.</span>
           </p>
           <p className={styles.subtitle}>
             I&apos;m always open to discussing new projects, creative ideas, or

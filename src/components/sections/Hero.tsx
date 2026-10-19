@@ -6,8 +6,6 @@ import {
   animate,
   motion,
   useMotionValue,
-  useScroll,
-  useTransform,
 } from "framer-motion";
 import { ArrowDown, MapPin } from "lucide-react";
 import { portfolioData } from "@/data/portfolio";
@@ -23,8 +21,8 @@ const roles = [
   "Node.js Builder",
 ];
 
-// Hover colours cycle through a rich, bright spectrum so the name lights up letter by letter
-const spectrum = ["#38bdf8", "#a78bfa", "#f472b6", "#fbbf24", "#34d399"];
+// Hover colours cycle through flat, loud brutalist colours; none is the shadow blue, so the offset stays visible
+const spectrum = ["#1b2a6b", "#00e5ff", "#7c3aed", "#ff5a1f", "#ffffff"];
 
 const stickers = [
   { label: "React", className: "stickerReact" },
@@ -35,7 +33,7 @@ const stickers = [
 
 // The letter the cursor blob rests under until the visitor moves their mouse ("a" in Arihant)
 const HOME_INDEX = 4;
-const TEXT = "#f5f5f7";
+const TEXT = "#0a0a0a";
 const RETURN_DELAY_MS = 2500;
 
 function Sticker({
@@ -100,7 +98,6 @@ export default function Hero() {
   const { name, location } = portfolioData.personal;
   const [first, ...rest] = name.split(" ");
   const [roleIndex, setRoleIndex] = useState(0);
-  const heroRef = useRef<HTMLElement>(null);
   const dragAreaRef = useRef<HTMLDivElement>(null);
   // Until the visitor moves the mouse, the "a" stays lit with the cursor blob parked under it
   const [engaged, setEngaged] = useState(false);
@@ -109,12 +106,6 @@ export default function Hero() {
   const [waveIndex, setWaveIndex] = useState<number | null>(null);
   // Entrance uses a staggered tween; after that, letter changes use a snappy spring
   const [entered, setEntered] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const orbRotate = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
@@ -164,18 +155,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className={styles.hero} ref={heroRef}>
-      {/* Separate glows instead of one blurred colour wheel, which averaged out to grey */}
-      <motion.div
-        className={styles.aurora}
-        style={{ rotate: orbRotate }}
-        aria-hidden
-      >
-        <span className={styles.glowSky} />
-        <span className={styles.glowLavender} />
-        <span className={styles.glowRose} />
-        <span className={styles.glowAmber} />
-      </motion.div>
+    <section id="hero" className={styles.hero}>
       <div className={styles.gridLines} aria-hidden />
 
       <div className={styles.dragArea} ref={dragAreaRef} aria-hidden />
@@ -273,7 +253,7 @@ export default function Hero() {
                 exit={{ y: -40, opacity: 0, rotate: 6, scale: 0.9 }}
                 transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
               >
-                <span className="gradient-text">{roles[roleIndex]}</span>
+                <span className="marker">{roles[roleIndex]}</span>
               </motion.span>
             </AnimatePresence>
           </div>

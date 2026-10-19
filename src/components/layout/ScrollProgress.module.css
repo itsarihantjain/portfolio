@@ -1,11 +1,11 @@
+/* Caution-tape stripes */
 .bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 8px;
   z-index: 1100;
   transform-origin: 0% 50%;
-  background: var(--gradient-brand);
-  box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.6);
+  background: repeating-linear-gradient(-45deg, var(--ink) 0 10px, var(--sky) 10px 20px);
 }

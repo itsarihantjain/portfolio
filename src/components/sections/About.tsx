@@ -24,7 +24,7 @@ export default function About() {
           <Card className={styles.card}>
             <Sparkles className={styles.introIcon} size={28} />
             <h3 className={styles.introTitle}>
-              Frontend-heavy. <span className="gradient-text">Full stack capable.</span>
+              Frontend-heavy. <span className="marker">Full stack capable.</span>
             </h3>
             {bio.map((p, i) => (
               <p key={i} className={styles.introText}>
@@ -46,7 +46,7 @@ export default function About() {
         <AnimatedElement className={cn(styles.cell, styles.crash)} direction="scale" delay={0.15}>
           <Card className={styles.card}>
             <Zap className={styles.statIcon} size={22} />
-            <span className={cn(styles.bigNumber, 'gradient-text')}>
+            <span className={cn(styles.bigNumber, 'marker')}>
               <CountUp value="99%" />
             </span>
             <span className={styles.statLabel}>fewer app crashes at BluSmart</span>
